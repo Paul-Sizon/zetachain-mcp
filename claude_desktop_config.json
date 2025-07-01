@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "zetachain-mcp": {
+      "command": "node",
+      "args": ["/[absolute path]/zetachain-mcp/build/index.js"],
+      "env": {
+        "ZETA_CHAIN_RPC": "https://zetachain-evm.blockpi.network:443/v1/rpc/public"
+      }
+    }
+  }
+}
