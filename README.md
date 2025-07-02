@@ -2,6 +2,10 @@
 
 A Model Context Protocol (MCP) server built in TypeScript that enables LLM agents to access ZetaChain blockchain data using a public RPC endpoint. This server exposes core EVM-compatible methods and analysis prompts for ZetaChain, making it easy for LLMs to interact with ZetaChain wallets and contracts.
 
+### Example:
+<img src="https://github.com/Paul-Sizon/zetachain-mcp/blob/main/screenshot.png?raw=true" alt="ZetaChain MCP Server in action" width="350"/>
+
+
 ---
 
 ## 📦 Installation
