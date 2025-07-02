@@ -2,51 +2,79 @@
 
 A Model Context Protocol (MCP) server built in TypeScript that enables LLM agents to access ZetaChain blockchain data using a public RPC endpoint. This server exposes core EVM-compatible methods and analysis prompts for ZetaChain, making it easy for LLMs to interact with ZetaChain wallets and contracts.
 
-![ZetaChain MCP Server](tools-merged.png)
+---
 
-## Tech Stack
+## 🚀 Quick Start
 
-- [MCP TypeScript SDK](https://www.npmjs.com/package/@modelcontextprotocol/sdk)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Viem](https://viem.sh/)
-- [Zod](https://zod.dev/)
+Follow these steps to set up and start using the ZetaChain MCP Server:
 
-## Features
+1. **Clone the repository**
 
-- **MCP-Compatible**: Built using the Model Context Protocol SDK for LLM agent integration
-- **ZetaChain Support**: Works exclusively with ZetaChain Mainnet
-- **Core EVM Methods**: Includes `eth_getBalance`, `eth_getCode`, and `eth_gasPrice` for ZetaChain
-- **LLM Prompts**: Pre-built prompts for wallet analysis, contract inspection, and gas price evaluation
-- **No API Key Required**: Uses ZetaChain's public RPC endpoint—no .env or API key setup needed
+   ```bash
+   git clone <your-repo-url>
+   cd zetachain-mcp
+   ```
 
-## Prerequisites
+2. **Install dependencies**
 
-- [Node.js](https://nodejs.org/en) >= 18
-- TypeScript
-- Claude Desktop or any other MCP-compatible agent runner
+   ```bash
+   pnpm install
+   ```
 
-## Project Instructions
+3. **Build the project**
 
-1. Clone the repository
+   ```bash
+   pnpm run build
+   ```
 
-```bash
-git clone <your-repo-url>
-cd zetachain-mcp
-```
+**No API keys or environment variables are required.** The server uses ZetaChain's public RPC endpoint by default.
 
-2. Install dependencies
+---
 
-```bash
-pnpm install
-```
+## 🧑‍💻 Using with Claude Desktop
 
-3. Build the project
+1. Open the **Claude Desktop** app.
+2. Go to **Claude** > **Settings** > **Developer**.
+3. Edit the `claude_desktop_config.json` file and add the following configuration (adjust the path as needed):
 
-```bash
-pnpm run build
-```
+   ```json
+   {
+     "mcpServers": {
+       "zetachain-mcp": {
+         "command": "node",
+         "args": [
+           "/absolute-path-to/zetachain-mcp/build/index.js"
+         ],        
+       }
+     }
+   }
+   ```
+   - Replace `/absolute-path-to` with the absolute path to your `zetachain-mcp` directory.
+   - The public ZetaChain RPC URL is already set; no API key is needed.
 
-## Project Structure
+4. **Restart Claude Desktop** to load the new MCP server.
+5. **Ask Claude Desktop to perform ZetaChain tasks** (see examples below).
+
+---
+
+## 📝 Example Agent Interactions
+
+- **Check a wallet balance:**
+  ```
+  Give the balance of the 0x1234...abcd address on ZetaChain
+  ```
+- **Analyze a contract:**
+  ```
+  Analyze 0x5678...efgh on ZetaChain
+  ```
+- **Get current gas prices:**
+  ```
+  Analyze the current gas prices on ZetaChain
+  ```
+
+---
+
+## 📦 Project Structure
 
 ```bash
 ├── chains.ts           # ZetaChain configuration and public RPC endpoint
@@ -59,54 +87,19 @@ pnpm run build
 └── tsconfig.json       # TypeScript configuration
 ```
 
-## Configure Claude Desktop
+---
 
-No environment variables or API keys are required. The server uses ZetaChain's public RPC endpoint by default.
+## ⚡ Features
 
-To configure, open the **Claude Desktop** app, go to **Claude** > **Settings** > **Developer**. Then, modify the `claude_desktop_config.json` file with the following content (adjust the path as needed):
+- **MCP-Compatible**: Built using the Model Context Protocol SDK for LLM agent integration
+- **ZetaChain Support**: Works exclusively with ZetaChain Mainnet
+- **Core EVM Methods**: Includes `eth_getBalance`, `eth_getCode`, and `eth_gasPrice` for ZetaChain
+- **LLM Prompts**: Pre-built prompts for wallet analysis, contract inspection, and gas price evaluation
+- **No API Key Required**: Uses ZetaChain's public RPC endpoint—no .env or API key setup needed
 
-```json
-{
-    "mcpServers": {
-        "zetachain-mcp": {
-            "command": "node",
-            "args": [
-                "/absolute-path-to/zetachain-mcp/build/index.js"
-            ],
-            "env": {
-                "ZETA_CHAIN_RPC": "https://zetachain-evm.blockpi.network:443/v1/rpc/public"
-            }
-        }
-    }
-}
-```
+---
 
-- Replace `/absolute-path-to` with the absolute path to the `zetachain-mcp` directory.
-- The public ZetaChain RPC URL is already set; no API key is needed.
-
-## Test the MCP Server
-
-Restart **Claude Desktop** and test the server by asking Claude Desktop to perform a task that requires the ZetaChain MCP Server. For example, ask Claude Desktop to get the balance of an address on ZetaChain.
-
-### Example Agent Interactions
-
-1. Check a wallet balance:
-```
-Give the balance of the 0x1234...abcd address on ZetaChain
-```
-
-2. Analyze a contract:
-```
-Analyze 0x5678...efgh on ZetaChain
-```
-
-3. Get current gas prices:
-```
-Analyze the current gas prices on ZetaChain, is it a good time to use the chain?
-```
-
-
-### MCP Tools
+## 🛠️ MCP Tools
 
 1. **eth_getBalance**
    - **Description**: Get the ZETA token balance of an address
@@ -131,9 +124,9 @@ Analyze the current gas prices on ZetaChain, is it a good time to use the chain?
    - **Returns**: 
      - Chain name, gas price in wei and Gwei, timestamp
 
-### MCP Prompts
+---
 
-The server provides the following MCP prompts:
+## 💡 MCP Prompts
 
 1. **check-wallet**
    - **Description**: Guide for analyzing a wallet's balance and context
@@ -155,7 +148,9 @@ The server provides the following MCP prompts:
      - `chain`: Chain to query (must be `zetachain`)
    - **Functionality**: Guides the LLM to analyze current gas prices and provide recommendations
 
-### MCP Resources
+---
+
+## 📚 MCP Resources
 
 The server provides access to these resources:
 - `evm://docs/gas-reference` - Gas price reference data for ZetaChain
