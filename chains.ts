@@ -21,13 +21,6 @@ export const CHAINS = {
   }
   // You can add more chains here, but you need to add the RPC URL to the .env file
 
-    // ethereum: {
-  //   network: "mainnet",
-  //   rpc: ETHEREUM_RPC,
-  //   name: "Ethereum",
-  //   symbol: "ETH",
-  //   decimals: 18,
-  // },
 };
 
 // Helper to get a chain by ID
