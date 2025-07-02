@@ -4,30 +4,45 @@ A Model Context Protocol (MCP) server built in TypeScript that enables LLM agent
 
 ---
 
+## 📦 Installation
+
+Install globally with your favorite package manager:
+
+```bash
+# With npm
+npm install -g zetachain-mcp-server
+
+# With yarn
+yarn global add zetachain-mcp-server
+
+# With pnpm
+pnpm add -g zetachain-mcp-server
+```
+
+---
+
 ## 🚀 Quick Start
 
-Follow these steps to set up and start using the ZetaChain MCP Server:
+After installing globally, you can use the CLI command `zetachain-mcp-server` directly in your Claude Desktop configuration.
 
-1. **Clone the repository**
+1. **Configure Claude Desktop**
 
-   ```bash
-   git clone <your-repo-url>
-   cd zetachain-mcp
-   ```
+   In your `claude_desktop_config.json`:
+   ```json
+   "mcpServers": {
+     "zetachain-mcp": {
+       "command": "zetachain-mcp-server"
+     }
+   }
+   ``
+   > No need to specify a path—just the command!
 
-2. **Install dependencies**
-
-   ```bash
-   pnpm install
-   ```
-
-3. **Build the project**
-
-   ```bash
-   pnpm run build
-   ```
+2. **Restart Claude Desktop** to load the new MCP server.
+3. **Ask Claude Desktop to perform ZetaChain tasks** (see examples below).
 
 **No API keys or environment variables are required.** The server uses ZetaChain's public RPC endpoint by default.
+
+> **Note:** If you install locally (not globally), you'll need to provide the full path to the CLI in your `node_modules/.bin` directory.
 
 ---
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { registerTools } from "./tools";
@@ -8,9 +9,9 @@ async function main() {
   try {
     // Create the MCP server
     const server = new McpServer({
-      name: "EVM MCP Server",
+      name: "ZetaChain MCP Server",
       version: "0.1.0",
-      description: "A server for LLM agents to access EVM blockchain data, specifically ZetaChain",
+      description: "A server for LLM agents to access ZetaChain blockchain data",
     });
 
     // Register all tools, prompts, and resources

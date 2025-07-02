@@ -1,6 +1,6 @@
 {
   "name": "zetachain-mcp-server",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A console-based MCP-compliant server for ZetaChain blockchain data access",
   "main": "index.js",
   "scripts": {
@@ -18,5 +18,8 @@
   "devDependencies": {
     "@types/node": "^22.14.1",
     "typescript": "^5.8.3"
+  },
+  "bin": {
+    "zetachain-mcp-server": "./build/index.js"
   }
 }
