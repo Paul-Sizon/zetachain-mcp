@@ -17,40 +17,49 @@ yarn global add zetachain-mcp-server
 
 # With pnpm
 pnpm add -g zetachain-mcp-server
+
+# With bun
+bun add -g zetachain-mcp-server
 ```
 
 ---
 
 ## 🚀 Quick Start
 
-After installing globally, you can use the CLI command `zetachain-mcp-server` directly in your Claude Desktop configuration.
+### For Cursor IDE
+After installing globally with `npm install -g zetachain-mcp-server`, you can use the CLI command directly in your Cursor `mcp.json` configuration:
 
-1. **Configure Claude Desktop**
-
-   In your `claude_desktop_config.json`:
-   ```json
-   "mcpServers": {
-     "zetachain-mcp": {
-       "command": "zetachain-mcp-server"
-     }
-   }
-   ``
-   > No need to specify a path—just the command!
-
-2. **Restart Claude Desktop** to load the new MCP server.
-3. **Ask Claude Desktop to perform ZetaChain tasks** (see examples below).
+```json
+{
+  "mcpServers": {
+    "zetachain-mcp": {
+      "command": "zetachain-mcp-server"
+    }
+  }
+}
+```
 
 **No API keys or environment variables are required.** The server uses ZetaChain's public RPC endpoint by default.
-
-> **Note:** If you install locally (not globally), you'll need to provide the full path to the CLI in your `node_modules/.bin` directory.
 
 ---
 
 ## 🧑‍💻 Using with Claude Desktop
 
-1. Open the **Claude Desktop** app.
-2. Go to **Claude** > **Settings** > **Developer**.
-3. Edit the `claude_desktop_config.json` file and add the following configuration (adjust the path as needed):
+> **Important:** Claude Desktop cannot use globally installed npm packages. You must install the package locally and provide the full path to the executable.
+
+### Installation
+1. Clone or download this repository to your local machine
+2. Navigate to the project directory and install dependencies:
+   ```bash
+   cd zetachain-mcp
+   npm install
+   npm run build
+   ```
+
+### Configuration
+1. Open the **Claude Desktop** app
+2. Go to **Claude** > **Settings** > **Developer**
+3. Edit the `claude_desktop_config.json` file and add the following configuration:
 
    ```json
    {
@@ -58,17 +67,21 @@ After installing globally, you can use the CLI command `zetachain-mcp-server` di
        "zetachain-mcp": {
          "command": "node",
          "args": [
-           "/absolute-path-to/zetachain-mcp/build/index.js"
-         ],        
+           "/absolute/path/to/zetachain-mcp/build/index.js"
+         ]
        }
      }
    }
    ```
-   - Replace `/absolute-path-to` with the absolute path to your `zetachain-mcp` directory.
-   - The public ZetaChain RPC URL is already set; no API key is needed.
 
-4. **Restart Claude Desktop** to load the new MCP server.
-5. **Ask Claude Desktop to perform ZetaChain tasks** (see examples below).
+   **Replace `/absolute/path/to/zetachain-mcp/` with the actual absolute path to your project directory.**
+
+   Example paths:
+   - macOS/Linux: `/Users/yourname/projects/zetachain-mcp/build/index.js`
+   - Windows: `C:\\Users\\yourname\\projects\\zetachain-mcp\\build\\index.js`
+
+4. Restart Claude Desktop for the changes to take effect
+5. **Ask Claude Desktop to perform ZetaChain tasks** (see examples below)
 
 ---
 
