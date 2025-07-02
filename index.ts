@@ -10,7 +10,7 @@ async function main() {
     // Create the MCP server
     const server = new McpServer({
       name: "ZetaChain MCP Server",
-      version: "0.1.0",
+      version: "0.1.1",
       description: "A server for LLM agents to access ZetaChain blockchain data",
     });
 
